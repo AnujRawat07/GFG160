@@ -1,0 +1,40 @@
+
+class Solution {
+  public:
+    bool checkCow(vector<int>&stalls,int totalCow,int dist){
+        int countCow=1;
+        int prevCow=stalls[0];
+        for(int i=1;i<stalls.size();++i){
+            if(stalls[i]-prevCow>=dist){
+                countCow++;
+                prevCow=stalls[i];
+            }
+            if(countCow>=totalCow){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    int aggressiveCows(vector<int> &stalls, int k) {
+
+        sort(stalls.begin(),stalls.end());
+        int n=stalls.size();
+        int low=1;
+        int high=stalls[n-1]-stalls[0];
+        int result=1;
+        while(low<=high){
+            int mid=low+floor((high-low)/2);
+            if(checkCow(stalls,k,mid)){
+                result=mid;
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+        }
+        return result;
+        
+    }
+};
+

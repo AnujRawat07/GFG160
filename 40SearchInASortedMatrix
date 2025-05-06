@@ -1,0 +1,26 @@
+
+class Solution {
+  public:
+  bool binarySearch(vector<int>&arr,int x){
+       int low=0;
+        int high=arr.size()-1;
+        while(low<=high){
+            int mid=floor((low+high)/2.0);
+            if(arr[mid]==x)return true;
+            else if(arr[mid]<x)low=mid+1;
+            else high=mid-1;
+        }
+        return false;
+  }
+    // Function to search a given number in row-column sorted matrix.
+    bool searchMatrix(vector<vector<int>> &mat, int x) {
+        int row=mat.size();
+        if(row==0)return false;
+        int col=mat[0].size();
+        for(int i=0;i<row;++i){
+            if(binarySearch(mat[i],x))return true;
+        }
+        return false;
+       
+    }
+};

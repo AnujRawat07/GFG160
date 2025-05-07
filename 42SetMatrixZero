@@ -1,0 +1,35 @@
+class Solution {
+  public:
+    void setMatrixZeroes(vector<vector<int>> &mat) {
+        // code here
+        int row=mat.size();
+        int col=mat[0].size();
+        vector<int>rowA(row,1);
+        vector<int>colA(col,1);
+        for(int i=0;i<row;i++)
+        {
+            for(int j=0;j<col;j++){
+            if(mat[i][j]==0)
+            {
+                rowA[i]=0;
+                colA[j]=0;
+            }
+            
+            }
+        }
+        for(int i=0;i<row;i++){
+            if(rowA[i]==0){
+                for(int j=0;j<col;j++){
+                    mat[i][j]=0;
+                }
+            }
+        }
+        for(int j=0;j<col;j++){
+            if(colA[j]==0){
+                for(int i=0;i<row;i++){
+                    mat[i][j]=0;
+                }
+            }
+        }
+    }
+};

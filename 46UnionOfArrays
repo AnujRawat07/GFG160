@@ -1,0 +1,15 @@
+
+class Solution {
+  public:
+      int findUnion(vector<int>& a, vector<int>& b) {
+         
+        std::set<int>uniqueElements;
+        for(int num:a){
+            uniqueElements.insert(num);
+        }
+        for(int num:b){
+            uniqueElements.insert(num);
+        }
+        return uniqueElements.size();
+    }
+};

@@ -1,0 +1,19 @@
+class Solution {
+  public:
+    long subarrayXor(vector<int> &arr, int k) {
+         
+        int n=arr.size();
+        int xor_val=0;
+        int cnt=0;
+        unordered_map<int,int>mp;
+        mp[0]=1;
+        for(int num:arr){
+            xor_val ^=num;
+            if(mp.count(xor_val ^ k)){
+                cnt+=mp[xor_val ^ k];
+            }
+            mp[xor_val]++;
+        }
+        return cnt;
+    }
+};
